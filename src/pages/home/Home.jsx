@@ -3,12 +3,11 @@ import { BsPerson } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa";
 
 
-
 const Home = () => {
   return (
     <section>
       <div className="header bg-[#f26522] ">
-        <div className="container flex flex-col justify-center items-center text-[#ffffff] py-30 p-4 mx-auto w-250">
+        <div className="container flex flex-col justify-center items-center text-[#ffffff] py-32 p-4 mx-auto w-250">
           <h1 className="text-[55px] font-bold">Sayohatingizni biz bilan boshlang</h1>
           <p className="text-2xl text-[#ffff] py-2">Nemo Travel - huzur uchun yo'l</p>
           <div className="bg-[#ffff] rounded-full my-8 px-8 py-6 flex items-center justify-around gap-8 w-200">
