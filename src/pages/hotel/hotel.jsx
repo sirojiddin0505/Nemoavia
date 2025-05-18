@@ -1,10 +1,9 @@
 import React from 'react'
 
-const Tours = () => {
+const hotel = () => {
   return (
 <></>
-
-  )
+)
 }
 
-export default Tours
+export default hotel

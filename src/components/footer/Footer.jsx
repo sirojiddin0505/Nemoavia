@@ -30,7 +30,7 @@ const Footer = () => {
                 <p className="text-[14px] w-65 text-[#9ca3af]">Toshkent shahri, Muqumiy ko'chasi 44-A uy</p>
             </div>
         </footer>
-        <hr className='mt-12 mb-6 text-[#9ca3af] text-center mw-[100%] w-[1100px] mx-auto' />
+        {/* <hr className='mt-12 mb-6 text-[#9ca3af] text-center mw-[100%] w-[1100px] mx-auto' /> */}
         <p className="text-[#9ca3af] text-center">2025 Nemo Avia Trip Barcha huquqlar himoyalangan</p>
     </section>
 )
