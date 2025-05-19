@@ -6,8 +6,8 @@ import { SiGmail } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <section className='bg-[#111827] text-[#ffffff] my-5 py-10'>
-        <footer className="container mx-auto flex justify-between gap-8">
+    <section className='bg-[#111827] text-[#ffffff] px-6 py-10'>
+        <footer className="container mx-auto flex flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
             <div className="">
                 <img src={logo} alt="logo bor" className='w-16 py-4' />
                 <p className="text-[14px] w-65 text-[#9ca3af]">Toshkent shahri, Muqumiy ko'chasi 44-A uy</p>
@@ -30,8 +30,7 @@ const Footer = () => {
                 <p className="text-[14px] w-65 text-[#9ca3af]">Toshkent shahri, Muqumiy ko'chasi 44-A uy</p>
             </div>
         </footer>
-        {/* <hr className='mt-12 mb-6 text-[#9ca3af] text-center mw-[100%] w-[1100px] mx-auto' /> */}
-        <p className="text-[#9ca3af] text-center">2025 Nemo Avia Trip Barcha huquqlar himoyalangan</p>
+        <p className="text-[#9ca3af] text-center mt-10">2025 Nemo Avia Trip Barcha huquqlar himoyalangan</p>
     </section>
 )
 }

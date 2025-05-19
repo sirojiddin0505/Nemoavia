@@ -14,6 +14,11 @@ import hotel3 from '../images/hotel3.png'
 import avia2 from '../images/avia2.png'
 import avia3 from '../images/avia3.png'
 import avia4 from '../images/avia4.png'
+import Marquee from 'react-fast-marquee';
+import image from '../images/image.png'
+import qatar from '../images/qatar.png'
+import turkish from '../images/turkish.png'
+import uzair from '../images/image1.png'
 
 
 const Home = () => {
@@ -183,9 +188,37 @@ const Home = () => {
 
     <section className='avia'>
       <div className="container mx-auto py-12 px-4">
-        <h2 className="text-2xl font-bold">Aviachiptalar</h2>
-
-        <h2 className='text-2xl font-bold text-center'>Mahhur shaharlar</h2>
+        <h2 className="text-2xl font-bold ml-6">Aviachiptalar</h2>
+        <div className="wrapper bg-[#ffff] shadow-xl p-6 rounded-[8px]">
+          <div className="flex  gap-4">
+            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Borish</button>
+            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Qaytish</button>
+          </div>
+          <div className=" mx-auto max-w-[1200px]">
+            <form id='form' className=''>
+              <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-4  w-full ">
+              <div className=''>
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Qayerdan</label>
+                <input type="text" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              <div className="">
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Qayerga</label>
+                <input type="text" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] 'required/>
+              </div>
+              <div className="">
+                <label id='label' className='text-sm font-medium text-gray-700 mx-1 '>Jo'nash sanasi</label>
+                <input type="date" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              <div className="">
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Yo'lovchilar</label>
+                <input maxLength={4} type="number" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              </div>
+              <button type='submit' className='border-1 rounded-[6px] py-2 px-8 w-full my-1 bg-[#f26522] font-semibold text-[18px] text-white hover:opacity-80'>Qidirish</button>
+            </form>
+          </div>
+        </div>
+        <h2 className='text-2xl font-bold text-center pt-20'>Mahhur shaharlar</h2>
         <div className="cards flex flex-col items-center gap-8 py-12 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           <div className="max-w-[320px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
             <div><img src={tours3} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
@@ -199,7 +232,7 @@ const Home = () => {
             <div><img src={avia2} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
             <div className="py-4 px-6">
               <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Saudiya Arabistoni</h2>
-              <p className='py-2 pb-10'>Umra ziyorati uchun maxsus paketlar</p>
+              <p className='py-2 pb-6'>Umra ziyorati uchun maxsus paketlar</p>
               <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
             </div>
           </div>
@@ -222,7 +255,66 @@ const Home = () => {
         </div>
       </div>
     </section>
+
+    <section> 
+      <h2 className="text-2xl text-center font-bold mb-4">Hamkorlarimiz</h2>
+      <Marquee pauseOnHover={false} speed={150} className='cursor-pointer py-4'>
+        <img src={image} alt=""  className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={qatar} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={uzair} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={turkish} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={image} alt=""  className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={qatar} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={uzair} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+        <img src={turkish} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
+      </Marquee>
+    </section>
       
+      <section>
+        <div className="contact">
+          <div className="container mx-auto py-10 px-4">
+            <h2 className="text-center">Biz bilan bog'lanish</h2>
+            <p className="text-center">Svolingiz bormi? Biz sizga yordam berishdan xursandmiz</p>
+            <div className="box flex justify-between px-4">
+              <div className="box1 bg-[#ffff] py-10 px-6  w-full max-w-[600px]">
+                <form id="form2">
+                <div className=" w-full">
+                  <div className="">
+                    <label>Ismingiz</label>
+                    <input type="name" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 mb-6 focus:border-[#f26522] outline-none' required/>
+                  </div>
+                  <div className="">
+                    <label>Email manzilingiz</label>
+                    <input type="email" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 focus:border-[#f26522] outline-none' required />
+                  </div>
+                  <div className="">
+                    <label>Telefon raqamingiz</label>
+                    <input type="tel" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 focus:border-[#f26522] outline-none' required/>
+                  </div>
+                  <div className="">
+                    <label>Savolingiz</label>
+                    <input type="text" className='w-full border-2 border-[#727070] rounded-[6px] py-8 mt-2 focus:border-[#f26522] outline-none' required />
+                  </div>
+                  <button  type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80'>Yuborish</button>
+                </div>
+                </form>
+              </div>
+              <div className="box2">
+                <div className="aloqa">
+                  <h3>Aloqa ma'lumotlari</h3>
+                  <p>Manzil: Toshkent shahri Muqimiy ko'chasi 44-A uy</p>
+                  <a href="tel:+998951500000"><p>Tel: +998 93 150 00 00</p></a>
+                  <p>Email: info@nemoavia.uz</p>
+                  <p>Ish vaqti: Du-Sha 24 soat</p>
+                </div>
+                <div className="map w-[600px] h-[400px] p-6 ">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.2837463913424!2d69.23896297512701!3d41.28092867131355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8af549caa943%3A0xb57ba020a1de5d09!2sMuqimiy%20ko%27chasi%2044%2C%20%D0%A2%D0%BEshkent%2C%20Toshkent%2C%20O%CA%BBzbekiston!5e0!3m2!1suz!2s!4v1747656473144!5m2!1suz!2s" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Muqimiy xaritasi"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
     
 
