@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../images/logo.png'
 const Header = () => {
   return (
-    <section className='bg-[#f26522] border-b-2 border-white'>
+    <section className='fixed right-0 left-0 z-50 bg-[#f26522] border-b-2 border-white'>
         <header className="container mx-auto p-5 hidden lg:flex lg:justify-between lg:items-center text-[#ffffff]">  
             <a href="#" className=""><img src={logo} alt="logo bor edi" className='w-19 h-6' /></a>
             <nav className='gap-[50px] hidden lg:flex'>
@@ -12,6 +12,7 @@ const Header = () => {
                 <NavLink className="transform hover:scale-110 transition duration-500 " to={'/hotel'}>Mehmonxonalar</NavLink>
                 <NavLink className="transform hover:scale-110 transition duration-500 " to={'/avia'}>Aviachiptalar</NavLink>
                 <NavLink className="transform hover:scale-110 transition duration-500 " to={'/contact'}>Aloqa</NavLink>
+                {/* <a href="About7">About</a> */}
             </nav>
             <div className="flex gap-4 items-center ">
                 <select name="select" className='outline-none bg-[#f26522] font-bold text-[white]'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsPerson } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa";
 import about1 from '../images/about1.jpg'
@@ -19,39 +19,67 @@ import image from '../images/image.png'
 import qatar from '../images/qatar.png'
 import turkish from '../images/turkish.png'
 import uzair from '../images/image1.png'
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 
 const Home = () => {
+  const {register, handleSubmit} = useForm()
+  // const [firstime, setFirstime] = useState("")
+  const sendMessage = (data) => {
+    console.log(data);
+
+    const bot_token = "8171242828:AAGekrDGyZJMZdghTIZurMr78LZpCBTQZiQ"
+    const chat_id = 1456386212
+    axios({
+      method:'POST',
+      url:`https://api.telegram.org/bot${bot_token}/sendMessage`,
+      headers:{
+        "Content-Type": "application/json"
+      },
+      data:{
+        chat_id:chat_id,
+        text : data,
+      }
+    }).then(res=>{
+      alert("Good Lucl!!!")
+    }).catch(err=>{
+      console.log(err);
+      
+    })
+
+  }
+  
   return (
     <>
     <section className='home'>
       <div className="bg-[#f26522]">
-        <div className="container flex flex-col justify-center items-center text-[#ffffff] py-32 p-4 mx-auto w-250">
+        <div className="container flex flex-col justify-center items-center text-[#ffffff] pt-50 pb-30 p-4 mx-auto w-250">
           <h1 className="text-[55px] font-bold text-center md:text-[35px]">Sayohatingizni biz bilan boshlang</h1>
           <p className="text-2xl text-[#ffff] py-2">Nemo Travel - huzur uchun yo'l</p>
-          <div className="bg-[#ffff] max-w-[800px] rounded-full my-8 px-8 py-6 flex items-center justify-around gap-8 w-200">
-            <div className="flex gap-4 item-center">
+          <div className="bg-[#ffff] w-full rounded-full my-8 p-6 gap-8 flex justify-center flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="flex gap-4 w-full justify-center items-center">
               <BsPerson className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
                 <h2 className="text-[#1f2937]">Mamnun mijozlar</h2>
                 <p className="font-bold text-[#1f2937]">45000+</p>
               </div>
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 w-full items-center">
               <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
                 <h2 className="text-[#1f2937]">Mamalakatlar</h2>
                 <p className="font-bold text-[#1f2937]">30+</p>
               </div>
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 w-full items-center">
             <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
             <div className="">
               <h2 className="text-[#1f2937]">Tajriba</h2>
               <p className="font-bold text-[#1f2937]">5+ yil</p>
             </div>
             </div>
-            <button className='bg-[#f26522] py-2 px-8 rounded-full hover:bg-[#e85a1db1] '>Batafsil ma'lumot</button>
+            <button className='bg-[#f26522] py-2 px-8 w-full mx-auto rounded-full hover:bg-[#e85a1db1] '>Batafsil ma'lumot</button>
           </div>
         </div>
       </div>
@@ -72,13 +100,13 @@ const Home = () => {
               <p className="">O'zbekistondagi yetakchi sanoat kompaniyasiya aylanish va xalqaro miqyosda tan olingan brend bo'lish</p>
             </div>
           </div>
-          <div className="boxs py-14 flex items-center justify-around flex-col md:grid md:grid-cols-2 gap-6 ">
+          <div className="boxs py-14 flex items-center justify-between flex-col md:grid md:grid-cols-2 gap-6 ">
             <div className="max-w-140">
               <p className="text-gray-600 mb-4 leading-7">Bizning turizm kompaniyamiz dunyo bo‘ylab sayohatlar va qulayliklar taklif etadi. Biz sizni orzudagi manzilingizga yetkazib, unutilmas xotiralar yaratishga yordam beramiz. Kompaniyamiz UzAirways, Centrum Air, Turkish Airlines kabi yirik aviakompaniyalar bilan hamkorlik qiladi.</p>
               <p className="text-gray-600 leading-7">Bizning tajribali jamoamiz har bir detallni hisobga olib, rejalashtirilgan mukammal xizmatni taqdim etadi. Biz bilan dunyoning istalgan joyiga qulay va ishonchli sayohat qiling! Xizmatlarimiz: Fransiyaga turlar va dam olish, Ko‘ngilli tibbiy sug‘urtalash, Sug‘urta xizmatlari (Toshkentda va O‘zbekistonda), Turfirmalari va turagentliklari O‘zbekistonda, Turistlarni sug‘urtalash, Turizm va sayyohlik xizmatlari O‘zbekistonda, Turlar Antaliyaga va dam olish Antaliyada, Turlar BAAga va dam olish BAAda, Turlar Bali oroliga va dam olish Bali orolida, Turlar Germaniyaga va dam olish Germaniyada, Turlar Indoneziyaga va dam olish Indoneziyada.</p>
             </div>
-            <div className="flex flex-col overflow-hidden gap-4 max-w-[560px] px-1">
-              <div className=""><img src={about1} className="w-full h-64 object-cover rounded-[12px]" alt="" /></div>
+            <div className="flex flex-col overflow-hidden gap-4 w-full max-w-[560px] px-1">
+              <div className=""><img src={about1} className="w-full h-50 object-cover rounded-[12px]" alt="" /></div>
               <div className="flex gap-6">
                 <div className="w-70"><img src={about2} alt="#" className='w-full h-40 object-cover rounded-[12px]'/></div>
                 <div className="w-70"><img src={about3} alt="#" className='w-full h-40 object-cover rounded-[12px]'/></div>
@@ -101,7 +129,7 @@ const Home = () => {
         <h1 className="text-3xl font-bold mb-4 text-center">Turlar</h1>
         <p className="text-xl text-gray-600 text-center mb-10">Eng yaxshi sayohat turlari</p>
         <div className="cards flex flex-col items-center gap-8 sm:grid grid-cols-2 lg:grid-cols-4">
-          <div className="max-w-[550px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[550px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div>
               <img src={tours1} alt="rasm bor" className='h-[190px] w-full object-cover' />
             </div>
@@ -111,7 +139,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil</button>
             </div>
           </div>
-          <div className="max-w-[550px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[550px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div>
               <img src={tours2} alt="rasm bor" className='h-[190px] w-full object-cover' />
             </div>
@@ -121,7 +149,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil</button>
             </div>
           </div>
-          <div className="max-w-[550px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[550px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div>
               <img src={tours3} alt="rasm bor" className='h-[190px] w-full object-cover' />
             </div>
@@ -131,7 +159,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil</button>
             </div>
           </div>
-          <div className="max-w-[550px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[550px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div>
               <img src={tours4} alt="rasm bor" className='h-[190px] w-full object-cover' />
             </div>
@@ -149,18 +177,18 @@ const Home = () => {
     <div className="container mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold text-center mb-8">Menmonxonalar</h1>
         <div className="card flex flex-col items-center gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 ">
-           <div className="max-w-[400px] rounded-[12px] border-2 border-[#f26522] overflow-hidden pb-4">
+           <div className="max-w-[400px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden pb-4">
                 <div>
                     <img src={hotel1} alt="rasm bor" className='h-[190px] w-full object-cover' />
                 </div>
-                <div className="py-4 px-8">
+                <div className="py-4 px-6">
                    <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Hyatt Regency Tashkent</h2>
                     <p className=''>Navoiy ko'chasi 1-uy, Toshkent</p>
                     <p className='py-2'>Navoiy ko' 1-uy,amonaviy mehmonxona markaz markazida</p>
                     <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
                 </div>
             </div>
-           <div className="max-w-[400px] rounded-[12px] border-2 border-[#f26522] overflow-hidden pb-4">
+           <div className="max-w-[400px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden pb-4">
                 <div>
                     <img src={hotel2} alt="rasm bor" className='h-[190px] w-full object-cover' />
                 </div>
@@ -171,7 +199,7 @@ const Home = () => {
                     <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
                 </div>
             </div>
-           <div className="max-w-[400px] rounded-[12px] border-2 border-[#f26522] overflow-hidden pb-4">
+           <div className="max-w-[400px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden pb-4">
                 <div>
                     <img src={hotel3} alt="rasm bor" className='h-[190px] w-full object-cover' />
                 </div>
@@ -189,12 +217,12 @@ const Home = () => {
     <section className='avia'>
       <div className="container mx-auto py-12 px-4">
         <h2 className="text-2xl font-bold ml-6">Aviachiptalar</h2>
-        <div className="wrapper bg-[#ffff] shadow-xl p-6 rounded-[8px]">
+        <div className="wrapper max-w-[1400px] mx-auto bg-[#ffff] shadow-xl p-6 rounded-[8px]">
           <div className="flex  gap-4">
             <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Borish</button>
             <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Qaytish</button>
           </div>
-          <div className=" mx-auto max-w-[1200px]">
+          <div className=" mx-auto ">
             <form id='form' className=''>
               <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-4  w-full ">
               <div className=''>
@@ -214,13 +242,13 @@ const Home = () => {
                 <input maxLength={4} type="number" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
               </div>
               </div>
-              <button type='submit' className='border-1 rounded-[6px] py-2 px-8 w-full my-1 bg-[#f26522] font-semibold text-[18px] text-white hover:opacity-80'>Qidirish</button>
+              <button type='submit' className='border-1 rounded-[6px] py-2 px-8 w-full my-1 bg-[#f26522] font-semibold text-[18px] text-white hover:opacity-80 cursor-pointer'>Qidirish</button>
             </form>
           </div>
         </div>
         <h2 className='text-2xl font-bold text-center pt-20'>Mahhur shaharlar</h2>
         <div className="cards flex flex-col items-center gap-8 py-12 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-          <div className="max-w-[320px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[320px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div><img src={tours3} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
             <div className="py-4 px-6">
               <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Dubai</h2>
@@ -228,7 +256,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
             </div>
           </div>
-          <div className="max-w-[320px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[320px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div><img src={avia2} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
             <div className="py-4 px-6">
               <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Saudiya Arabistoni</h2>
@@ -236,7 +264,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
             </div>
           </div>
-          <div className="max-w-[320px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[320px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div><img src={avia3} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
             <div className="py-4 px-6">
               <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Istanbul</h2>
@@ -244,7 +272,7 @@ const Home = () => {
               <button className='bg-[#f26522] rounded-full text-[#ffffff] mt-2 py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil ma'lumot</button>
             </div>
           </div>
-          <div className="max-w-[320px] rounded-[12px] border-2 border-[#f26522] overflow-hidden">
+          <div className="max-w-[320px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div><img src={avia4} alt="rasm bor" className='h-[190px] w-full object-cover' /></div>
             <div className="py-4 px-6">
               <h2 className='text-xl font-semibold mb-2 text-[#000000]'>Antalya</h2>
@@ -258,7 +286,7 @@ const Home = () => {
 
     <section> 
       <h2 className="text-2xl text-center font-bold mb-4">Hamkorlarimiz</h2>
-      <Marquee pauseOnHover={false} speed={150} className='cursor-pointer py-4'>
+      <Marquee pauseOnHover={false} speed={130} className='cursor-pointer py-4'>
         <img src={image} alt=""  className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
         <img src={qatar} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
         <img src={uzair} alt="" className='rounded-[12px] mx-2 w-[200px] h-[120px]'/>
@@ -270,51 +298,56 @@ const Home = () => {
       </Marquee>
     </section>
       
-      <section>
-        <div className="contact">
+    <section className='contact'>
+        <div className='bg-[#f3f4f6]'>
           <div className="container mx-auto py-10 px-4">
-            <h2 className="text-center">Biz bilan bog'lanish</h2>
-            <p className="text-center">Svolingiz bormi? Biz sizga yordam berishdan xursandmiz</p>
-            <div className="box flex justify-between px-4">
-              <div className="box1 bg-[#ffff] py-10 px-6  w-full max-w-[600px]">
-                <form id="form2">
-                <div className=" w-full">
+            <h2 className="text-center text-3xl font-bold text-[#282424] mb-4">Biz bilan bog'lanish</h2>
+            <p className="text-center text-xl text-gray-600 pb-14">Savolingiz bormi? Biz sizga yordam berishdan xursandmiz</p>
+            <div className="box flex flex-col justify-center items-center lg:grid lg:grid-cols-2 px-4 gap-8">
+              <div className="box1 bg-[#ffff] py-4 px-6  w-full max-w-[600px] rounded-xl shadow-lg">
+                <form id="form2" onSubmit={handleSubmit(sendMessage)}>
+                <div className="">
                   <div className="">
                     <label>Ismingiz</label>
-                    <input type="name" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 mb-6 focus:border-[#f26522] outline-none' required/>
+                    <input type="name" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("firstname")} />
                   </div>
                   <div className="">
                     <label>Email manzilingiz</label>
-                    <input type="email" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 focus:border-[#f26522] outline-none' required />
+                    <input type="email" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("email")} />
                   </div>
                   <div className="">
                     <label>Telefon raqamingiz</label>
-                    <input type="tel" className='w-full border-2 border-[#727070] rounded-[6px] py-2 mt-2 focus:border-[#f26522] outline-none' required/>
+                    <input type="number" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("number")} />
+                  </div>
+                  <div className="">
+                    <label>Mavzu</label>
+                    <input type="text" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300'/>
                   </div>
                   <div className="">
                     <label>Savolingiz</label>
-                    <input type="text" className='w-full border-2 border-[#727070] rounded-[6px] py-8 mt-2 focus:border-[#f26522] outline-none' required />
+                    <textarea rows={4} className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' id="textarea">
+                    </textarea>
                   </div>
-                  <button  type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80'>Yuborish</button>
+                  <button  type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80 cursor-pointer'>Yuborish</button>
                 </div>
                 </form>
               </div>
-              <div className="box2">
-                <div className="aloqa">
-                  <h3>Aloqa ma'lumotlari</h3>
-                  <p>Manzil: Toshkent shahri Muqimiy ko'chasi 44-A uy</p>
+              <div className="box2 w-full max-w-[600px]">
+                <div className="aloqa bg-white shadow-lg rounded-lg p-4  mb-4">
+                  <h3 className='text-xl font-semibold mb-4'>Aloqa ma'lumotlari</h3>
+                  <p className='py-2'>Manzil: Toshkent shahri Muqimiy ko'chasi 44-A uy</p>
                   <a href="tel:+998951500000"><p>Tel: +998 93 150 00 00</p></a>
-                  <p>Email: info@nemoavia.uz</p>
+                  <p className='py-2'>Email: info@nemoavia.uz</p>
                   <p>Ish vaqti: Du-Sha 24 soat</p>
                 </div>
-                <div className="map w-[600px] h-[400px] p-6 ">
+                <div className="map bg-white w-full h-[380px] p-6 rounded-xl shadow-lg">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.2837463913424!2d69.23896297512701!3d41.28092867131355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8af549caa943%3A0xb57ba020a1de5d09!2sMuqimiy%20ko%27chasi%2044%2C%20%D0%A2%D0%BEshkent%2C%20Toshkent%2C%20O%CA%BBzbekiston!5e0!3m2!1suz!2s!4v1747656473144!5m2!1suz!2s" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Muqimiy xaritasi"></iframe>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+    </section>
     </>
     
 
