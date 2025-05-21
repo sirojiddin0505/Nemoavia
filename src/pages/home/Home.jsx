@@ -21,16 +21,18 @@ import turkish from '../images/turkish.png'
 import uzair from '../images/image1.png'
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const Home = () => {
-  const {register, handleSubmit} = useForm()
-  // const [firstime, setFirstime] = useState("")
+  const [activeTab , setActiveTab] = useState("Borish")
+  const {register, handleSubmit, formState:{errors}, reset} = useForm()
   const sendMessage = (data) => {
     console.log(data);
 
     const bot_token = "8171242828:AAGekrDGyZJMZdghTIZurMr78LZpCBTQZiQ"
     const chat_id = 1456386212
+    const message = ` 🧑🏻‍🦲 Ism: ${data?.firstname}\n 📩 Email: ${data?.email}\n 📞 Phone: ${data?.phone}`
     axios({
       method:'POST',
       url:`https://api.telegram.org/bot${bot_token}/sendMessage`,
@@ -39,12 +41,15 @@ const Home = () => {
       },
       data:{
         chat_id:chat_id,
-        text : data,
+        text : message,
       }
     }).then(res=>{
-      alert("Good Lucl!!!")
+      toast.success("Xabar yuborildi")
+      reset()
+      // alert("Good Luck!!!")
     }).catch(err=>{
-      console.log(err);
+      toast.error ("Xatolik")
+      // console.log(err);
       
     })
 
@@ -52,10 +57,10 @@ const Home = () => {
   
   return (
     <>
-    <section className='home'>
+    <section id='home'>
       <div className="bg-[#f26522]">
         <div className="container flex flex-col justify-center items-center text-[#ffffff] pt-50 pb-30 p-4 mx-auto w-250">
-          <h1 className="text-[55px] font-bold text-center md:text-[35px]">Sayohatingizni biz bilan boshlang</h1>
+          <h1 className="text-6xl mb-4 font-bold text-center">Sayohatingizni biz bilan boshlang</h1>
           <p className="text-2xl text-[#ffff] py-2">Nemo Travel - huzur uchun yo'l</p>
           <div className="bg-[#ffff] w-full rounded-full my-8 p-6 gap-8 flex justify-center flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <div className="flex gap-4 w-full justify-center items-center">
@@ -79,13 +84,13 @@ const Home = () => {
               <p className="font-bold text-[#1f2937]">5+ yil</p>
             </div>
             </div>
-            <button className='bg-[#f26522] py-2 px-8 w-full mx-auto rounded-full hover:bg-[#e85a1db1] '>Batafsil ma'lumot</button>
+            <a href="#contact"><button className='bg-[#f26522] py-2 px-8 w-full mx-auto rounded-full hover:bg-[#e85a1db1]'>Batafsil ma'lumot</button></a>
           </div>
         </div>
       </div>
     </section>
 
-    <section className='about'>
+    <section id='about'>
       <div className="hero">
         <div className="container mx-auto  py-8 px-6">
           <h1 className="font-bold text-4xl mb-6 text-center">Biz haqimizda</h1>
@@ -124,7 +129,7 @@ const Home = () => {
       </div>
     </section>
 
-    <section className='tours'>
+    <section id='tours'>
       <div className="container mx-auto py-16 px-6">
         <h1 className="text-3xl font-bold mb-4 text-center">Turlar</h1>
         <p className="text-xl text-gray-600 text-center mb-10">Eng yaxshi sayohat turlari</p>
@@ -173,7 +178,7 @@ const Home = () => {
       </div>
     </section>
 
-    <section className='hotels'>
+    <section id='hotel'>
     <div className="container mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold text-center mb-8">Menmonxonalar</h1>
         <div className="card flex flex-col items-center gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 ">
@@ -214,15 +219,16 @@ const Home = () => {
     </div>
     </section>
 
-    <section className='avia'>
+    <section id='avia'>
       <div className="container mx-auto py-12 px-4">
         <h2 className="text-2xl font-bold ml-6">Aviachiptalar</h2>
         <div className="wrapper max-w-[1400px] mx-auto bg-[#ffff] shadow-xl p-6 rounded-[8px]">
           <div className="flex  gap-4">
-            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Borish</button>
-            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] ">Qaytish</button>
+            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] " onClick={()=> setActiveTab("Borish")} >Borish</button>
+            <button className=" active:text-white  active:bg-[#f26522] bg-[#edeaea] py-2 px-4 rounded-[6px] " onClick={()=> setActiveTab("Qaytish")} >Qaytish</button>
           </div>
           <div className=" mx-auto ">
+            {activeTab === "Borish" && 
             <form id='form' className=''>
               <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-4  w-full ">
               <div className=''>
@@ -244,6 +250,34 @@ const Home = () => {
               </div>
               <button type='submit' className='border-1 rounded-[6px] py-2 px-8 w-full my-1 bg-[#f26522] font-semibold text-[18px] text-white hover:opacity-80 cursor-pointer'>Qidirish</button>
             </form>
+            }
+            {activeTab === "Qaytish" &&
+            <form id='form' className=''>
+              <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-4  w-full ">
+              <div className=''>
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Qayerdan</label>
+                <input type="text" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              <div className="">
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Qayerga</label>
+                <input type="text" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] 'required/>
+              </div>
+              <div className="">
+                <label id='label' className='text-sm font-medium text-gray-700 mx-1 '>Jo'nash sanasi</label>
+                <input type="date" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              <div className="">
+                <label id='label' className='text-sm font-medium text-gray-700 mx-1 '>Qaytish sanasi</label>
+                <input type="date" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              <div className="">
+                <label id="label" className='text-sm font-medium text-gray-700 mx-1 '>Yo'lovchilar</label>
+                <input maxLength={4} type="number" className='w-full border-2 border-[#9a9494] p-2 rounded-[6px] outline-none focus:border-2 focus:border-[#f26522] ' required/>
+              </div>
+              </div>
+              <button type='submit' className='border-1 rounded-[6px] py-2 px-8 w-full my-1 bg-[#f26522] font-semibold text-[18px] text-white hover:opacity-80 cursor-pointer'>Qidirish</button>
+            </form>
+            }
           </div>
         </div>
         <h2 className='text-2xl font-bold text-center pt-20'>Mahhur shaharlar</h2>
@@ -298,7 +332,7 @@ const Home = () => {
       </Marquee>
     </section>
       
-    <section className='contact'>
+    <section id='contact'>
         <div className='bg-[#f3f4f6]'>
           <div className="container mx-auto py-10 px-4">
             <h2 className="text-center text-3xl font-bold text-[#282424] mb-4">Biz bilan bog'lanish</h2>
@@ -309,23 +343,26 @@ const Home = () => {
                 <div className="">
                   <div className="">
                     <label>Ismingiz</label>
-                    <input type="name" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("firstname")} />
+                    <input type="name" className='w-full p-2 my-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("firstname" , {required:"Ismingizni kiriting", minLength:{value:6, message:"Kamida 6 ta harf yozing"}})} />
+                    {errors.firstname && <p className='text-red-500 '>{errors.firstname.message}</p>}
                   </div>
-                  <div className="">
+                  <div className="mt-4">
                     <label>Email manzilingiz</label>
-                    <input type="email" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("email")} />
+                    <input type="email" className='w-full p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("email", {required:"email kiriting"})} />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p> }
                   </div>
-                  <div className="">
+                  <div className="mt-4">
                     <label>Telefon raqamingiz</label>
-                    <input type="number" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("number")} />
+                    <input type="number" className='w-full p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' {...register("phone", {required:"raqam kiriting", minLength:{value:10,  message:"kamida 10 ta raqam kiriting",}, maxLength:{value:16, message:"maximal belgi miqdori 12 ta"}})} />
+                    {errors.phone &&  <p className='text-red-500'>{errors.phone.message}</p>}
                   </div>
-                  <div className="">
+                  <div className="mt-4">
                     <label>Mavzu</label>
-                    <input type="text" className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300'/>
+                    <input type="text" className='w-full p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300'/>
                   </div>
-                  <div className="">
+                  <div className="mt-4">
                     <label>Savolingiz</label>
-                    <textarea rows={4} className='w-full p-2 mb-4 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' id="textarea">
+                    <textarea rows={4} className='w-full p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' id="textarea">
                     </textarea>
                   </div>
                   <button  type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80 cursor-pointer'>Yuborish</button>

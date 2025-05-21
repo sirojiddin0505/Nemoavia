@@ -6,13 +6,12 @@ const Header = () => {
         <header className="container mx-auto p-5 hidden lg:flex lg:justify-between lg:items-center text-[#ffffff]">  
             <a href="#" className=""><img src={logo} alt="logo bor edi" className='w-19 h-6' /></a>
             <nav className='gap-[50px] hidden lg:flex'>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/'}>Asosiy</NavLink>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/about'}>Biz haqimizda</NavLink>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/tours'}>Turlar</NavLink>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/hotel'}>Mehmonxonalar</NavLink>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/avia'}>Aviachiptalar</NavLink>
-                <NavLink className="transform hover:scale-110 transition duration-500 " to={'/contact'}>Aloqa</NavLink>
-                {/* <a href="About7">About</a> */}
+                <a href="#home">Asosiy</a>
+                <a href="#about">Biz haqimizda</a>
+                <a href="#tours">Turlar</a>
+                <a href="#hotel">Menmonhonalar</a>
+                <a href="#avia">Aviachiptalar</a>
+                <a href="#contact">Aloqa</a>
             </nav>
             <div className="flex gap-4 items-center ">
                 <select name="select" className='outline-none bg-[#f26522] font-bold text-[white]'>
