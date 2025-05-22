@@ -55,36 +55,38 @@ const Home = () => {
 
   }
   
-  return (
+  return (  
     <>
     <section id='home'>
-      <div className="bg-[#f26522]">
-        <div className="container flex flex-col justify-center items-center text-[#ffffff] pt-50 pb-30 p-4 mx-auto w-250">
-          <h1 className="text-6xl mb-4 font-bold text-center">Sayohatingizni biz bilan boshlang</h1>
-          <p className="text-2xl text-[#ffff] py-2">Nemo Travel - huzur uchun yo'l</p>
-          <div className="bg-[#ffff] w-full rounded-full my-8 p-6 gap-8 flex justify-center flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <div className="flex gap-4 w-full justify-center items-center">
+      <div className="bg-[#f26522] pt-18">
+        <div className="container mx-auto flex flex-col justify-between items-center  px-8 py-20">
+          <h1 className="text-6xl mb-4 font-bold text-center text-white text-[36px] leading-12 md:text-[64px] md:leading-20">Sayohatingizni biz bilan boshlang</h1>
+          <p className="text-2xl text-[#ffff] py-2 mb-10 text-center">Nemo Travel - huzur uchun yo'l</p>
+          <div className="box py-8 px-12 bg-white rounded-2xl sm:rounded-full flex gap-6 flex-col max-w-[1100px] sm:grid sm:grid-cols-3 lg:grid-cols-4">
+            <div className="box1 flex gap-4 items-start">
               <BsPerson className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
                 <h2 className="text-[#1f2937]">Mamnun mijozlar</h2>
                 <p className="font-bold text-[#1f2937]">45000+</p>
               </div>
             </div>
-            <div className="flex gap-4 w-full items-center">
+            <div className="box2 flex gap-4 items-start">
               <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
                 <h2 className="text-[#1f2937]">Mamalakatlar</h2>
                 <p className="font-bold text-[#1f2937]">30+</p>
               </div>
             </div>
-            <div className="flex gap-4 w-full items-center">
-            <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
-            <div className="">
-              <h2 className="text-[#1f2937]">Tajriba</h2>
-              <p className="font-bold text-[#1f2937]">5+ yil</p>
+            <div className="box3 flex gap-4  items-start">
+              <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
+              <div className="">
+                <h2 className="text-[#1f2937]">Tajriba</h2>
+                <p className="font-bold text-[#1f2937]">5+ yil</p>
+              </div>
             </div>
+            <div className="box4">
+              <a href="#contact"><button className='bg-[#f26522] py-2 px-8 mx-auto rounded-full hover:bg-[#e85a1db1] text-white'>Batafsil ma'lumot</button></a>
             </div>
-            <a href="#contact"><button className='bg-[#f26522] py-2 px-8 w-full mx-auto rounded-full hover:bg-[#e85a1db1]'>Batafsil ma'lumot</button></a>
           </div>
         </div>
       </div>
