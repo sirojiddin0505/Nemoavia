@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import i18next from 'i18next'
+import i18n from './i18n.jsx'
 
 createRoot(document.getElementById('root')).render(
 

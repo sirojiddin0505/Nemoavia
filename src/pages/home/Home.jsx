@@ -22,9 +22,12 @@ import uzair from '../images/image1.png'
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 
 const Home = () => {
+  const {t, i18n} = useTranslation()
+
   const [activeTab , setActiveTab] = useState("Borish")
   const {register, handleSubmit, formState:{errors}, reset} = useForm()
   const sendMessage = (data) => {
@@ -46,13 +49,9 @@ const Home = () => {
     }).then(res=>{
       toast.success("Xabar yuborildi")
       reset()
-      // alert("Good Luck!!!")
     }).catch(err=>{
-      toast.error ("Xatolik")
-      // console.log(err);
-      
+      toast.error ("Xatolik")      
     })
-
   }
   
   return (  
@@ -60,32 +59,32 @@ const Home = () => {
     <section id='home'>
       <div className="bg-[#f26522] pt-18">
         <div className="container mx-auto flex flex-col justify-between items-center  px-8 py-20">
-          <h1 className="text-6xl mb-4 font-bold text-center text-white text-[36px] leading-12 md:text-[64px] md:leading-20">Sayohatingizni biz bilan boshlang</h1>
-          <p className="text-2xl text-[#ffff] py-2 mb-10 text-center">Nemo Travel - huzur uchun yo'l</p>
+          <h1 className="text-6xl mb-4 font-bold text-center text-white text-[36px] leading-12 md:text-[64px] md:leading-20">{t("Sayohatingizni biz bilan boshlang")}</h1>
+          <p className="text-2xl text-[#ffff] py-2 mb-10 text-center">{t("Nemo Travel - huzur uchun yo'l")}</p>
           <div className="box py-8 px-12 bg-white rounded-2xl sm:rounded-full flex gap-6 flex-col max-w-[1100px] sm:grid sm:grid-cols-3 lg:grid-cols-4">
             <div className="box1 flex gap-4 items-start">
               <BsPerson className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
-                <h2 className="text-[#1f2937]">Mamnun mijozlar</h2>
+                <h2 className="text-[#1f2937]">{t("Mamnun mijozlar")}</h2>
                 <p className="font-bold text-[#1f2937]">45000+</p>
               </div>
             </div>
             <div className="box2 flex gap-4 items-start">
               <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
-                <h2 className="text-[#1f2937]">Mamalakatlar</h2>
+                <h2 className="text-[#1f2937]">{t("Mamalakatlar")}</h2>
                 <p className="font-bold text-[#1f2937]">30+</p>
               </div>
             </div>
             <div className="box3 flex gap-4  items-start">
               <FaRegClock className='w-10 h-10 p-2 rounded-full text-white bg-[#f26522]'/>
               <div className="">
-                <h2 className="text-[#1f2937]">Tajriba</h2>
+                <h2 className="text-[#1f2937]">{t("Tajriba")}</h2>
                 <p className="font-bold text-[#1f2937]">5+ yil</p>
               </div>
             </div>
             <div className="box4">
-              <a href="#contact"><button className='bg-[#f26522] py-2 px-8 mx-auto rounded-full hover:bg-[#e85a1db1] text-white'>Batafsil ma'lumot</button></a>
+              <a href="#contact"><button className='bg-[#f26522] py-2 px-8 mx-auto rounded-full hover:bg-[#e85a1db1] text-white'>{t("Batafsil ma'lumot")}</button></a>
             </div>
           </div>
         </div>
@@ -95,22 +94,22 @@ const Home = () => {
     <section id='about'>
       <div className="hero">
         <div className="container mx-auto  py-8 px-6">
-          <h1 className="font-bold text-4xl mb-6 text-center">Biz haqimizda</h1>
-          <p className="text-xl text-gray-600 text-center mb-16">Sizning ishonchli sayohat hamkoringiz</p>
+          <h1 className="font-bold text-4xl mb-6 text-center">{t("Biz haqimizda")}</h1>
+          <p className="text-xl text-gray-600 text-center mb-16">{t("Sizning ishonchli sayohat hamkoringiz")}</p>
           <div className="box flex flex-col md:grid md:grid-cols-2 gap-12">
             <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Bizning vazifamiz</h3>
-              <p className="text-gray-600">Har bir mijozga individual yondashuv orqali yuqori sifatli va qulay sayohat xizmatlarini taqdim etish</p>
+              <h3 className="text-2xl font-bold mb-4">{t("Bizning vazifamiz")}</h3>
+              <p className="text-gray-600">{t("Har bir mijozga individual yondashuv orqali yuqori sifatli va qulay sayohat xizmatlarini taqdim etish")}</p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">Bizning maqsadlarimiz</h3>
-              <p className="">O'zbekistondagi yetakchi sanoat kompaniyasiya aylanish va xalqaro miqyosda tan olingan brend bo'lish</p>
+              <h3 className="text-2xl font-bold mb-4">{t("Bizning maqsadlarimiz")}</h3>
+              <p className="">{t("O'zbekistondagi yetakchi sanoat kompaniyasiya aylanish va xalqaro miqyosda tan olingan brend bo'lish")}</p>
             </div>
           </div>
           <div className="boxs py-14 flex items-center justify-between flex-col md:grid md:grid-cols-2 gap-6 ">
             <div className="max-w-140">
-              <p className="text-gray-600 mb-4 leading-7">Bizning turizm kompaniyamiz dunyo bo‘ylab sayohatlar va qulayliklar taklif etadi. Biz sizni orzudagi manzilingizga yetkazib, unutilmas xotiralar yaratishga yordam beramiz. Kompaniyamiz UzAirways, Centrum Air, Turkish Airlines kabi yirik aviakompaniyalar bilan hamkorlik qiladi.</p>
-              <p className="text-gray-600 leading-7">Bizning tajribali jamoamiz har bir detallni hisobga olib, rejalashtirilgan mukammal xizmatni taqdim etadi. Biz bilan dunyoning istalgan joyiga qulay va ishonchli sayohat qiling! Xizmatlarimiz: Fransiyaga turlar va dam olish, Ko‘ngilli tibbiy sug‘urtalash, Sug‘urta xizmatlari (Toshkentda va O‘zbekistonda), Turfirmalari va turagentliklari O‘zbekistonda, Turistlarni sug‘urtalash, Turizm va sayyohlik xizmatlari O‘zbekistonda, Turlar Antaliyaga va dam olish Antaliyada, Turlar BAAga va dam olish BAAda, Turlar Bali oroliga va dam olish Bali orolida, Turlar Germaniyaga va dam olish Germaniyada, Turlar Indoneziyaga va dam olish Indoneziyada.</p>
+              <p className="text-gray-600 mb-4 leading-7">{t("Bizning turizm kompaniyamiz dunyo bo‘ylab sayohatlar va qulayliklar taklif etadi. Biz sizni orzudagi manzilingizga yetkazib, unutilmas xotiralar yaratishga yordam beramiz. Kompaniyamiz UzAirways, Centrum Air, Turkish Airlines kabi yirik aviakompaniyalar bilan hamkorlik qiladi.")}</p>
+              <p className="text-gray-600 leading-7">{t("Bizning tajribali jamoamiz har bir detallni hisobga olib, rejalashtirilgan mukammal xizmatni taqdim etadi. Biz bilan dunyoning istalgan joyiga qulay va ishonchli sayohat qiling! Xizmatlarimiz: Fransiyaga turlar va dam olish, Ko‘ngilli tibbiy sug‘urtalash, Sug‘urta xizmatlari (Toshkentda va O‘zbekistonda), Turfirmalari va turagentliklari O‘zbekistonda, Turistlarni sug‘urtalash, Turizm va sayyohlik xizmatlari O‘zbekistonda, Turlar Antaliyaga va dam olish Antaliyada, Turlar BAAga va dam olish BAAda, Turlar Bali oroliga va dam olish Bali orolida, Turlar Germaniyaga va dam olish Germaniyada, Turlar Indoneziyaga va dam olish Indoneziyada.")}</p>
             </div>
             <div className="flex flex-col overflow-hidden gap-4 w-full max-w-[560px] px-1">
               <div className=""><img src={about1} className="w-full h-50 object-cover rounded-[12px]" alt="" /></div>
@@ -120,7 +119,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-center mb-12">Bizning jamoa</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t("Bizning jamoa")}</h2>
           <div className="flex justify-around flex-wrap sm:grid sm:grid-cols-2 md:gap-6 lg:grid-cols-4 gap-2"> 
             <div className="text-xl font-medium text-gray-800 p-8 bg-[#ffffff] text-center min-w-[150px] rounded-lg shadow-lg">Direktor</div>
             <div className="text-xl font-medium text-gray-800 p-8 bg-[#ffffff] text-center min-w-[150px] rounded-lg shadow-lg">Yurist</div>
@@ -133,16 +132,16 @@ const Home = () => {
 
     <section id='tours'>
       <div className="container mx-auto py-16 px-6">
-        <h1 className="text-3xl font-bold mb-4 text-center">Turlar</h1>
-        <p className="text-xl text-gray-600 text-center mb-10">Eng yaxshi sayohat turlari</p>
+        <h1 className="text-3xl font-bold mb-4 text-center">{t("Turlar")}</h1>
+        <p className="text-xl text-gray-600 text-center mb-10">{t("Eng yaxshi sayohat turlari")}</p>
         <div className="cards flex flex-col items-center gap-8 sm:grid grid-cols-2 lg:grid-cols-4">
           <div className="max-w-[550px] rounded-[12px] shadow-md hover:shadow-xl transition-shadow duration-30 bg-[#ffff] overflow-hidden">
             <div>
               <img src={tours1} alt="rasm bor" className='h-[190px] w-full object-cover' />
             </div>
             <div className="py-4 px-6">
-              <h2 className='text-xl font-bold'>Yurtimiz bo'ylab sayohat</h2>
-              <p className='py-2 mb-4'>O'zbekistonning tarixiy va ma'daniy shaharlari bo'ylab</p>
+              <h2 className='text-xl font-bold'>{t("Yurtimiz bo'ylab sayohat")}</h2>
+              <p className='py-2 mb-4'>{t("O'zbekistonning tarixiy va ma'daniy shaharlari bo'ylabn")}</p>
               <button className='bg-[#f26522] rounded-full text-[#ffffff] py-2 px-8 cursor-pointer hover:opacity-70 btn'>Batafsil</button>
             </div>
           </div>
@@ -367,7 +366,7 @@ const Home = () => {
                     <textarea rows={4} className='w-full p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300' id="textarea">
                     </textarea>
                   </div>
-                  <button  type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80 cursor-pointer'>Yuborish</button>
+                  <button type='submit' className='py-2 px-6 w-full rounded-[6px] bg-[#222121] text-white my-4 hover:opacity-80 cursor-pointer'>Yuborish</button>
                 </div>
                 </form>
               </div>
